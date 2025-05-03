@@ -4,10 +4,7 @@ An AI-powered framework for anomaly detection in industrial IoT sensor networks 
 
 ## Architecture Overview
 
-
 ![Azure Architecture](docs/images/image-2.png)
-
-
 
 *Figure 1: The system architecture showing data flow from source to presentation*
 
@@ -32,19 +29,19 @@ The system includes an interactive Streamlit application with multiple views:
 
 ![Risk Summary Dashboard](docs/images/image.png)
 
-*Figure 3: Dashboard showing anomaly distribution and trends*
+*Figure 2: Dashboard showing anomaly distribution and trends*
 
 ### Maintenance Advisor
 
 ![Maintenance Advisor](docs/images/image-1.png)
 
-*Figure 2: AI-powered maintenance advisor providing contextual troubleshooting assistance*
+*Figure 3: AI-powered maintenance advisor providing contextual troubleshooting assistance*
 
 ## Repository Structure
 
 ```
 /
-├── data/                    # Sample data files
+├── data/                    # Sample data files (anonymized)
 ├── notebook/                # Jupyter notebooks for exploration and development
 ├── src/                     # Source code
 │   ├── azure_deployment/    # Backend anomaly detection pipeline
@@ -91,7 +88,17 @@ streamlit run demo.py
 
 ### Deploying to Azure
 
-See our [deployment guide](./docs/deployment.md) for detailed instructions on deploying to Azure.
+The application can be deployed to Azure using Azure App Service:
+
+```bash
+# Navigate to streamlitapp directory
+cd src/streamlitapp
+
+# Deploy to Azure App Service
+az webapp up --sku B1 --name risk-insights-app --resource-group your-resource-group
+```
+
+For the backend pipeline, Azure Container Instances are used for deployment. The containerized pipeline can be deployed using the Azure CLI or through the Azure Portal.
 
 ## Anomaly Detection Pipeline
 
@@ -124,10 +131,16 @@ Insights are tailored to different stakeholder needs with asset-specific context
 
 This project was developed as part of our Master's Capstone project at Northeastern University, focusing on industrial IoT anomaly detection and insight generation. The system demonstrates the power of combining multiple analytical techniques with graph-based relationship modeling to provide comprehensive understanding of complex sensor networks.
 
+## Team Members
+
+- **Veera Varuni Radhakrishnan** - [radhakrishnan.ve@northeastern.edu](mailto:radhakrishnan.ve@northeastern.edu)
+- **Mohit Vikas Deshpande** - [deshpande.mo@northeastern.edu](mailto:deshpande.mo@northeastern.edu)
+- **Jagadeesh Suthanthirathasan** - [suthanthirathasan.j@northeastern.edu](mailto:suthanthirathasan.j@northeastern.edu)
+
 ## Acknowledgements
 
 We would like to thank all contributors to this project, especially the faculty advisors and industry partners who provided guidance and feedback throughout the development process.
 
 ## License
 
-This project is released under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is released under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
